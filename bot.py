@@ -1793,3 +1793,18 @@ async def on_guild_channel_delete(channel):
             ticket_timers[channel.id].cancel()
             del ticket_timers[channel.id]
         del active_tickets[channel.id]
+
+# At the VERY BOTTOM of bot.py - REPLACE the existing run block with this
+import asyncio
+import threading
+
+TOKEN = os.getenv('DISCORD_BOT_TOKEN', 'YOUR_BOT_TOKEN_HERE')
+
+def start_bot():
+    asyncio.run(bot.start(TOKEN))
+
+# Start bot in background thread
+if TOKEN and TOKEN != 'YOUR_BOT_TOKEN_HERE':
+    thread = threading.Thread(target=start_bot, daemon=True)
+    thread.start()
+    print("Bot started in background thread")
