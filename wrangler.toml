@@ -1,0 +1,26 @@
+name = "ticket-bot"
+main = "index.js"
+compatibility_date = "2024-12-01"
+
+# KV Namespace for storing data
+[[kv_namespaces]]
+binding = "TICKET_KV"
+id = "your-kv-id-here"  # This will be created automatically
+
+# Environment variables (set these in Cloudflare dashboard)
+[vars]
+DISCORD_TOKEN = ""
+DISCORD_PUBLIC_KEY = ""
+
+# Optional: Add a route if you want a custom domain
+# routes = [
+#   { pattern = "ticket-bot.yourdomain.com", zone_id = "your-zone-id" }
+# ]
+
+# For local development
+[env.dev]
+vars = { DISCORD_TOKEN = "", DISCORD_PUBLIC_KEY = "" }
+
+# For production
+[env.production]
+vars = { DISCORD_TOKEN = "", DISCORD_PUBLIC_KEY = "" }
