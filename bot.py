@@ -1775,20 +1775,3 @@ async def on_guild_channel_delete(channel):
             ticket_timers[channel.id].cancel()
             del ticket_timers[channel.id]
         del active_tickets[channel.id]
-
-# --- RUN THE BOT ---
-if __name__ == "__main__":
-    TOKEN = os.getenv('DISCORD_BOT_TOKEN', 'YOUR_BOT_TOKEN_HERE')
-    
-    if TOKEN == 'YOUR_BOT_TOKEN_HERE':
-        print("\n" + "="*50)
-        print("⚠️ IMPORTANT: Please set your bot token!")
-        print("Set environment variable DISCORD_BOT_TOKEN or edit the TOKEN variable")
-        print("="*50 + "\n")
-        sys.exit(1)
-    
-    try:
-        logger.info("🎫 Starting Ticket Bot...")
-        bot.run(TOKEN)
-    except Exception as e:
-        logger.critical(f"Fatal error: {e}", exc_info=True)
