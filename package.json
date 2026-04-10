@@ -1,0 +1,13 @@
+{
+  "name": "ticket-bot-cloudflare",
+  "version": "1.0.0",
+  "description": "Discord Ticket Bot for Cloudflare Workers",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.0.0"
+  }
+}
