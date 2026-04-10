@@ -13,6 +13,24 @@ import json
 import firebase_admin
 from firebase_admin import credentials, firestore, initialize_app
 
+# Add this at the VERY TOP of bot.py, right after all the imports
+from http.server import BaseHTTPRequestHandler
+import json
+
+# This is what Vercel is looking for
+class handler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header('Content-type', 'application/json')
+        self.end_headers()
+        response = {"status": "online", "message": "Bot is running"}
+        self.wfile.write(json.dumps(response).encode())
+    
+    def do_POST(self):
+        self.send_response(200)
+        self.end_headers()
+        self.wfile.write(b"OK")
+        
 # --- DEBUG CONFIGURATION ---
 DEBUG_MODE = True
 LOG_TO_FILE = True
